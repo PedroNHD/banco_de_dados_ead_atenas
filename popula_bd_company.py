@@ -134,8 +134,8 @@ conn.commit()
 # ==============================
 
 for nss in empregados:
-    projetos = random.sample(range(1, NUM_PROJETOS + 1),
-                             random.randint(1, 3))
+    projetos = random.sample(range(1, NUM_PROJETOS + 1), random.randint(1, NUM_PROJETOS))
+    
     for p in projetos:
         cursor.execute("""
             INSERT INTO Trabalha_em (NSSE, PNO, Horas)
