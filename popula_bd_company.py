@@ -32,9 +32,13 @@ def data_aleatoria(inicio_ano=1990, fim_ano=2024):
 # PARÂMETROS
 # ==============================
 
-NUM_DEPARTAMENTOS = 5
-NUM_EMPREGADOS = 30
-NUM_PROJETOS = 10
+try:
+    NUM_DEPARTAMENTOS = int(input("Quantidade de Departamentos: "))
+    NUM_EMPREGADOS = int(input("Quantidade de Empregados: "))
+    NUM_PROJETOS = int(input("Quantidade de Projetos: "))
+except ValueError:
+    print("Erro: Por favor, insira apenas números inteiros.")
+    exit()
 
 # ==============================
 # GERAR EMPREGADOS
@@ -130,8 +134,8 @@ conn.commit()
 # ==============================
 
 for nss in empregados:
-    projetos = random.sample(range(1, NUM_PROJETOS + 1),
-                             random.randint(1, 3))
+    projetos = random.sample(range(1, NUM_PROJETOS + 1), random.randint(1, NUM_PROJETOS))
+    
     for p in projetos:
         cursor.execute("""
             INSERT INTO Trabalha_em (NSSE, PNO, Horas)
